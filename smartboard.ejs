@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Live Session - Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #dbeafe, #c7d2fe, #a5b4fc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      background: white;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header-img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      color: #4f46e5;
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      text-align: left;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      display: block;
+      color: #1e3a8a;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.65rem 0.8rem;
+      margin-bottom: 1.3rem;
+      border: 2px solid #c7d2fe;
+      border-radius: 10px;
+      font-size: 1rem;
+      background: #f9fafb;
+      transition: border 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #6366f1;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    button {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      color: white;
+      padding: 0.75rem 1rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #4338ca, #3730a3);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+   <img src="/images/tutor.jpg" alt="Online Learning" class="header-img" />
+
+    
+    <h1>Join Your Live Session</h1>
+    <p>'Enter your details to securely join the virtual class session.'</p>
+
+    <form id="liveSessionForm" method="POST" action="/join-session">
+      <label for="sessionName">📚 Session Topic</label>
+      <input type="text" id="sessionName" name="sessionName" placeholder="e.g., Introduction to Algebra" required />
+
+      <label for="studentName">👤 Your Name</label>
+      <input type="text" id="studentName" name="studentName" placeholder="e.g., Rahul Kumar" required />
+
+      <label for="password">🔐 Session Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter session password" required />
+
+      <button type="submit">🚀 Join Now</button>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('liveSessionForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const sessionName = document.getElementById('sessionName').value.trim();
+      const studentName = document.getElementById('studentName').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (sessionName && studentName && password) {
+        alert(`✅ ${studentName}, you're joining "${sessionName}" with secure access.`);
+        // You can redirect or make a fetch request here as needed.
+        // Example: window.location.href = `/session/${sessionName}`;
+      }
+    });
+  </script>
+</body>
+</html>

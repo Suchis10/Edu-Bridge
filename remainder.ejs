@@ -1,0 +1,49 @@
+<!-- views/inbox.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduBridge - Inbox & Reminders</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+  <div class="container">
+    <h1 class="text-3xl font-bold text-center mb-6">Inbox & Reminders</h1>
+
+    <!-- Inbox Section -->
+    <div class="bg-white rounded shadow p-4 mb-6">
+      <h2 class="text-xl font-semibold mb-3">📥 Inbox</h2>
+      <ul class="list-group mb-3">
+        <% inboxMessages.forEach(message => { %>
+          <li class="list-group-item">
+            <strong><%= message.sender %>:</strong> <%= message.content %>
+            <button class="btn btn-sm btn-outline-primary float-end">Reply</button>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+
+    <!-- Set Reminders -->
+    <div class="bg-white rounded shadow p-4">
+      <h2 class="text-xl font-semibold mb-3">⏰ Set Reminder</h2>
+      <form action="/inbox" method="POST">
+        <div class="mb-3">
+          <label for="reminderTitle" class="form-label">Title</label>
+          <input type="text" class="form-control" id="reminderTitle" name="title" placeholder="e.g., Review Assignment">
+        </div>
+        <div class="mb-3">
+          <label for="reminderDate" class="form-label">Date</label>
+          <input type="date" class="form-control" id="reminderDate" name="date">
+        </div>
+        <div class="mb-3">
+          <label for="reminderTime" class="form-label">Time</label>
+          <input type="time" class="form-control" id="reminderTime" name="time">
+        </div>
+        <button type="submit" class="btn btn-primary">Set Reminder</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

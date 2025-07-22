@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | EduBridge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #00c6ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0073e6;
+    }
+
+    .role-toggle {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .role-toggle button {
+      flex: 1;
+      background: #eee;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .role-toggle button.active {
+      background-color: #00c6ff;
+      color: white;
+      border-color: #00c6ff;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .back-link a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <script>
+    function setRole(role) {
+      document.getElementById('role').value = role;
+
+      // Set active button styling
+      document.getElementById('studentBtn').classList.remove('active');
+      document.getElementById('tutorBtn').classList.remove('active');
+      document.getElementById(role + 'Btn').classList.add('active');
+
+      // Update form action
+      const form = document.getElementById('loginForm');
+      if (role === 'student') {
+        form.action = '/dashboard/student';
+      } else {
+        form.action = '/dashboard/teacher';
+      }
+    }
+
+    // Set default role on page load
+    window.onload = function () {
+      setRole('student');
+    };
+  </script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login to EduBridge</h2>
+    <form id="loginForm" method="GET">
+      <div class="form-group">
+        <label>Choose Role:</label>
+        <div class="role-toggle">
+          <button type="button" id="studentBtn" onclick="setRole('student')">Student</button>
+          <button type="button" id="tutorBtn" onclick="setRole('tutor')">Tutor</button>
+        </div>
+        <input type="hidden" name="role" id="role" value="student" />
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username or Email</label>
+        <input type="text" name="username" id="username" placeholder="Enter your username or email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Enter your password" required />
+      </div>
+
+      <button type="submit">Log In</button>
+
+      <div class="back-link">
+        <p>Don't have an account? <a href="/register">Register here</a></p>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

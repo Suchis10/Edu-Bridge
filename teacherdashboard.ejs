@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Tutor Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      body {
+        background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen text-gray-800 font-sans">
+    <div class="max-w-7xl mx-auto py-10 px-4 space-y-6">
+      <!-- Header -->
+      <div class="text-center">
+        <h1 class="text-4xl font-bold text-blue-900 mb-2">
+          📊 Tutor Dashboard
+        </h1>
+        <p class="text-gray-600">Monitor your classes, performance & messages</p>
+      </div>
+
+      <!-- Top Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-white bg-opacity-90 backdrop-blur shadow-lg rounded-xl p-5 text-center hover:shadow-xl transition">
+          <p class="text-sm font-semibold text-gray-500">Upcoming Classes</p>
+          <p class="text-3xl font-bold text-blue-600 mt-1"><%= upcomingClasses || 3 %></p>
+        </div>
+        <div class="bg-white bg-opacity-90 backdrop-blur shadow-lg rounded-xl p-5 text-center hover:shadow-xl transition">
+          <p class="text-sm font-semibold text-gray-500">Total Students</p>
+          <p class="text-3xl font-bold text-green-600 mt-1"><%= totalStudents || 28 %></p>
+        </div>
+        <div class="bg-white bg-opacity-90 backdrop-blur shadow-lg rounded-xl p-5 text-center hover:shadow-xl transition">
+          <p class="text-sm font-semibold text-gray-500">Pending Assignments</p>
+          <p class="text-3xl font-bold text-yellow-500 mt-1"><%= pendingAssignments || 5 %></p>
+        </div>
+        <div class="bg-white bg-opacity-90 backdrop-blur shadow-lg rounded-xl p-5 text-center hover:shadow-xl transition">
+          <p class="text-sm font-semibold text-gray-500">Unread Messages</p>
+          <p class="text-3xl font-bold text-red-500 mt-1"><%= unreadMessages || 2 %></p>
+        </div>
+      </div>
+
+      <!-- Core Panels -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Class Management -->
+        <div class="bg-gradient-to-br from-blue-100 to-white shadow-xl rounded-xl p-6 col-span-2 hover:shadow-2xl transition">
+          <h2 class="text-xl font-bold text-indigo-700 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-chalkboard-user text-indigo-600"></i>
+            Class Management
+          </h2>
+          <ul class="space-y-2 ml-6 text-blue-700">
+            <li><a href="/manage-classes" class="hover:underline">Manage Classes</a></li>
+            <li><a href="/assign-homework" class="hover:underline">Assign Homework</a></li>
+            <li><a href="/start-session" class="hover:underline">Start Live Session</a></li>
+          </ul>
+        </div>
+
+        <!-- Student Progress -->
+        <div class="bg-gradient-to-br from-purple-100 to-white shadow-xl rounded-xl p-6 hover:shadow-2xl transition">
+          <h2 class="text-xl font-bold text-purple-700 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-chart-line text-purple-600"></i>
+            Student Progress
+          </h2>
+          <a href="/student-progress" class="text-blue-700 font-medium hover:underline">View Reports</a>
+          <p class="text-sm text-gray-600 mt-1">Track scores, attendance & feedback.</p>
+        </div>
+
+        <!-- Communication Center -->
+        <div class="bg-gradient-to-br from-pink-100 to-white shadow-xl rounded-xl p-6 col-span-2 hover:shadow-2xl transition">
+          <h2 class="text-xl font-bold text-pink-700 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-comments text-pink-600"></i>
+            Communication Center
+          </h2>
+          <ul class="space-y-2 ml-6 text-blue-700">
+            <li><a href="/inbox" class="hover:underline">Inbox And Set Remainders</a></li>
+            <li><a href="/announcement" class="hover:underline">Post Announcement</a></li>
+          </ul>
+        </div>
+
+        <!-- Performance Analytics -->
+        <div class="bg-gradient-to-br from-teal-100 to-white shadow-xl rounded-xl p-6 hover:shadow-2xl transition">
+          <h2 class="text-xl font-bold text-teal-700 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-chart-pie text-teal-600"></i>
+            Performance Analytics
+          </h2>
+          <a href="/analytics" class="text-blue-700 font-medium hover:underline">Open Dashboard</a>
+          <p class="text-sm text-gray-600 mt-1">Get insights and trends across your classes.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

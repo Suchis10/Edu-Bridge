@@ -1,0 +1,30 @@
+<!-- views/announcements.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduBridge - Post Announcements</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+  <div class="container">
+    <h1 class="text-3xl font-bold text-center mb-6">📢 Post Announcement</h1>
+
+    <div class="bg-white rounded shadow p-4">
+      <form action="/post-announcement" method="POST">
+        <div class="mb-3">
+          <label for="announcementTitle" class="form-label">Announcement Title</label>
+          <input type="text" class="form-control" id="announcementTitle" name="title" placeholder="e.g., Midterm Schedule Released">
+        </div>
+        <div class="mb-3">
+          <label for="announcementContent" class="form-label">Message</label>
+          <textarea class="form-control" id="announcementContent" name="content" rows="5" placeholder="Write your announcement here..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Post Announcement</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register | Tutor Mate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .register-container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #ff6f61;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #e75b50;
+    }
+
+    .role-select {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+
+    .role-select label {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      margin: 0 5px;
+      transition: background 0.3s, border 0.3s;
+    }
+
+    .role-select input[type="radio"] {
+      display: none;
+    }
+
+    .role-select input[type="radio"]:checked + label {
+      background-color: #ff6f61;
+      color: white;
+      border: 2px solid #ff6f61;
+    }
+
+    .tutor-fields {
+      display: none;
+    }
+
+    .tutor-visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h2>Register on Tutor Mate</h2>
+    <form action="/auth/register" method="POST">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="text" name="username" placeholder="Username" required />
+      <input type="password" name="password" placeholder="Password" required />
+
+      <div class="role-select">
+        <input type="radio" name="role" id="student" value="student" checked />
+        <label for="student">Student</label>
+
+        <input type="radio" name="role" id="tutor" value="tutor" />
+        <label for="tutor">Tutor</label>
+      </div>
+
+      <div class="tutor-fields" id="tutorFields">
+        <input type="text" name="subject" placeholder="Subject Expertise" />
+        <input type="number" name="rate" placeholder="Rate per Hour (INR)" min="0" />
+        <input type="text" name="experience" placeholder="Experience (e.g. 2 years)" />
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+    const studentRadio = document.getElementById("student");
+    const tutorRadio = document.getElementById("tutor");
+    const tutorFields = document.getElementById("tutorFields");
+
+    function toggleFields() {
+      if (tutorRadio.checked) {
+        tutorFields.classList.add("tutor-visible");
+      } else {
+        tutorFields.classList.remove("tutor-visible");
+      }
+    }
+
+    studentRadio.addEventListener("change", toggleFields);
+    tutorRadio.addEventListener("change", toggleFields);
+
+    window.addEventListener("DOMContentLoaded", toggleFields);
+  </script>
+</body>
+</html>

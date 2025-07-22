@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Assign Homework</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body class="bg-gradient-to-br from-blue-50 to-white min-h-screen text-gray-800">
+    <div class="max-w-4xl mx-auto py-10 px-6">
+      
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-8">
+        <h1 class="text-3xl font-bold text-indigo-700 flex items-center gap-2">
+          <i class="fas fa-book-open"></i> Assign Homework
+        </h1>
+        <a href="/dashboard/teacher" class="text-indigo-600 hover:underline text-sm">
+          <i class="fas fa-arrow-left mr-1"></i>Back to Class Management
+        </a>
+      </div>
+
+      <!-- Form Card -->
+      <div class="bg-white shadow-xl rounded-xl p-8 space-y-6">
+        <form action="/assign-homework" method="POST">
+          
+          <!-- Homework Title -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Homework Title</label>
+            <input 
+              type="text" 
+              name="title"
+              value="<%= typeof title !== 'undefined' ? title : '' %>"
+              placeholder="e.g., Algebra Chapter 2 Problems"
+              class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            />
+          </div>
+
+          <!-- Subject Dropdown -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+            <select 
+              name="subject"
+              class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            >
+              <option>Select Subject</option>
+              <% subjects.forEach(subject => { %>
+                <option value="<%= subject %>" <%= selectedSubject === subject ? 'selected' : '' %>><%= subject %></option>
+              <% }) %>
+            </select>
+          </div>
+
+          <!-- Class Selection -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Assign to Class</label>
+            <select 
+              name="class"
+              class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            >
+              <option>Select Class</option>
+              <% classes.forEach(cls => { %>
+                <option value="<%= cls %>" <%= selectedClass === cls ? 'selected' : '' %>><%= cls %></option>
+              <% }) %>
+            </select>
+          </div>
+
+          <!-- Due Date -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
+            <input 
+              type="date" 
+              name="dueDate"
+              value="<%= typeof dueDate !== 'undefined' ? dueDate : '' %>"
+              class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            />
+          </div>
+
+          <!-- Description -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Homework Instructions</label>
+            <textarea 
+              name="instructions" 
+              rows="4" 
+              placeholder="Enter instructions for the students..."
+              class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            ><%= typeof instructions !== 'undefined' ? instructions : '' %></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="text-right">
+            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded shadow">
+              <i class="fas fa-paper-plane mr-2"></i>Assign Homework
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

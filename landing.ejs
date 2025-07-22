@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tutor Mate | Login or Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(120deg, #84fab0, #8fd3f4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #333;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .btn-group {
+      display: flex;
+      gap: 20px;
+    }
+    .btn {
+      background: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background: #ffd369;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to EduBridge</h1>
+  <p>Choose your action to get started</p>
+  <div class="btn-group">
+    <a href="/login"><button class="btn">Login</button></a>
+    <a href="/register"><button class="btn">Register</button></a>
+  </div>
+</body>
+</html>

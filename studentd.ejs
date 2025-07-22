@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduBridge - Student Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  </head>
+  <body class="bg-gradient-to-br from-indigo-100 via-white to-emerald-100 min-h-screen font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">Edu<span class="text-emerald-500">Bridge</span></h1>
+      <div class="flex items-center gap-3">
+        <span class="text-gray-600 font-medium">Welcome, <%= studentName || "Student" %></span>
+        <img src="https://img.freepik.com/free-vector/portrait-boy-with-brown-hair-brown-eyes_1308-146018.jpg" alt="User Avatar" class="w-8 h-8 rounded-full" />
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <main class="max-w-6xl mx-auto px-4 py-10">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Student Dashboard</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% const features = [
+          { icon: 'fa-map-marker-alt', color: 'purple', title: 'Join Nearby Tuitions', desc: 'Find tutors around your location and attend physical classes.',link: '/tuitions/nearby' },
+          { icon: 'fa-globe', color: 'blue', title: 'Join Distant Tuitions', desc: 'Connect to online sessions through Zoom or Meet.' },
+          { icon: 'fa-calendar-alt', color: 'green', title: 'Upcoming Sessions', desc: 'View and manage your upcoming scheduled sessions.' },
+          { icon: 'fa-heart', color: 'pink', title: 'Favorite Tutors', desc: "Quick access to tutors you've liked or bookmarked." },
+          { icon: 'fa-chart-line', color: 'yellow', title: 'Track Your Progress', desc: 'Monitor your learning and subjects completed.' },
+          { icon: 'fa-cog', color: 'gray', title: 'Profile Settings', desc: 'Manage your personal info and preferences.' },
+        ]; %>
+
+        
+        <% features.forEach(feature => { %>
+            <a href="<%= feature.link %>" class="block">
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-<%= feature.color %>-400">
+                <h3 class="text-lg font-semibold text-<%= feature.color %>-700 flex items-center gap-2">
+                    <i class="fas <%= feature.icon %>"></i> <%= feature.title %>
+                </h3>
+                <p class="text-gray-600 mt-2"><%= feature.desc %></p>
+            </div>
+            </a>
+        
+        <% }) %>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-gray-500 text-sm">
+      © 2025 EduBridge. All rights reserved.
+    </footer>
+  </body>
+</html>
+
